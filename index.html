@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GIGABOIZ Studio</title>
+
+  <style>
+    /* ===== Global Reset ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #111827, #05070d);
+      color: white;
+      min-height: 100vh;
+      padding: 40px;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ===== Container ===== */
+    .container {
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    /* ===== Hero Section ===== */
+    .hero {
+      text-align: center;
+      padding: 100px 20px;
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      background: linear-gradient(to right, #38bdf8, #a855f7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      color: #cbd5e1;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+
+    /* ===== Buttons ===== */
+    .buttons {
+      margin-top: 35px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-weight: 600;
+      transition: 0.3s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: linear-gradient(to right, #38bdf8, #a855f7);
+      box-shadow: 0 0 25px rgba(168, 85, 247, 0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 0 40px rgba(56, 189, 248, 0.6);
+    }
+
+    .btn-secondary {
+      border: 1px solid #334155;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-4px);
+      border-color: #38bdf8;
+    }
+
+    /* ===== Featured Games ===== */
+    .section-title {
+      margin-top: 80px;
+      font-size: 2rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .games {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 18px;
+      padding: 25px;
+      transition: 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(56, 189, 248, 0.6);
+      box-shadow: 0 0 30px rgba(56, 189, 248, 0.15);
+    }
+
+    .card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #cbd5e1;
+      line-height: 1.5;
+      margin-bottom: 15px;
+    }
+
+    .card a {
+      font-weight: 600;
+      color: #38bdf8;
+    }
+
+    .card a:hover {
+      text-decoration: underline;
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      text-align: center;
+      margin-top: 90px;
+      padding: 20px;
+      font-size: 0.9rem;
+      color: #64748b;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <!-- HERO -->
+    <section class="hero">
+      <h1>GIGABOIZ</h1>
+      <p>
+        Indie game developer making PC games with a clean studio vibe.
+        Publishing projects and experiments on itch.io.
+      </p>
+
+      <div class="buttons">
+        <a class="btn btn-primary" href="https://gigaboiz.itch.io" target="_blank">
+          🎮 My Itch.io
+        </a>
+        <a class="btn btn-secondary" href="https://github.com/GIGABOIZ" target="_blank">
+          💻 GitHub
+        </a>
+      </div>
+    </section>
+
+    <!-- FEATURED GAMES -->
+    <h2 class="section-title">⭐ Featured Games</h2>
+
+    <section class="games">
+      <div class="card">
+        <h3>Game Title #1</h3>
+        <p>A fast-paced indie action game made by GIGABOIZ.</p>
+        <a href="#">View on itch.io →</a>
+      </div>
+
+      <div class="card">
+        <h3>Game Title #2</h3>
+        <p>A stylish experimental project with unique gameplay.</p>
+        <a href="#">View on itch.io →</a>
+      </div>
+
+      <div class="card">
+        <h3>Game Title #3</h3>
+        <p>A small prototype built for fun and creativity.</p>
+        <a href="#">View on itch.io →</a>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      © 2026 GIGABOIZ Studio — Built with passion & old-school grind.
+    </footer>
+
+  </div>
+</body>
+</html>
