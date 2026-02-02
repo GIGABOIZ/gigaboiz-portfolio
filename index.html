@@ -1,109 +1,216 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>GIGABOIZ Studio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIGABOIZ | Indie Game Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0c;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.08);
+            --accent: #6366f1; /* Subtle indigo glow */
+            --accent-glow: rgba(99, 102, 241, 0.3);
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+        }
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: radial-gradient(circle at top, #111, #000);
-      color: white;
-      text-align: center;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    header {
-      padding: 80px 20px;
-    }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-    h1 {
-      font-size: 60px;
-      margin: 0;
-      letter-spacing: 3px;
-    }
+        /* Ambient Background Glows */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -10%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            z-index: -1;
+            filter: blur(80px);
+        }
 
-    p {
-      font-size: 18px;
-      opacity: 0.7;
-      max-width: 600px;
-      margin: 20px auto;
-    }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
 
-    .btn {
-      display: inline-block;
-      margin-top: 25px;
-      padding: 14px 30px;
-      border-radius: 30px;
-      background: white;
-      color: black;
-      font-weight: bold;
-      text-decoration: none;
-      transition: 0.2s;
-    }
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 60px;
+            text-align: center;
+        }
 
-    .btn:hover {
-      transform: scale(1.05);
-      background: #00ffcc;
-    }
+        .hero h1 {
+            font-size: clamp(3.5rem, 10vw, 6rem);
+            font-weight: 900;
+            letter-spacing: -2px;
+            margin-bottom: 10px;
+            background: linear-gradient(180deg, #fff 0%, #64748b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+        }
 
-    .card {
-      margin: 60px auto;
-      padding: 30px;
-      max-width: 700px;
-      border-radius: 20px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      box-shadow: 0 0 30px rgba(0,255,200,0.1);
-    }
+        .tagline {
+            font-size: 1.2rem;
+            color: var(--text-dim);
+            font-weight: 300;
+            margin-bottom: 40px;
+        }
 
-    footer {
-      padding: 30px;
-      font-size: 14px;
-      opacity: 0.4;
-    }
-  </style>
+        /* Buttons */
+        .cta-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background: var(--text-main);
+            color: var(--bg-dark);
+            border: 1px solid var(--text-main);
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--text-main);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -10px var(--accent);
+        }
+
+        .btn-secondary {
+            background: var(--card-bg);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Content Sections */
+        .section-title {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            margin-bottom: 24px;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            backdrop-filter: blur(12px);
+            border-radius: 24px;
+            padding: 40px;
+            margin-bottom: 30px;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.01);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .featured-game h2 {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+
+        .featured-game p {
+            color: var(--text-dim);
+            margin-bottom: 24px;
+            max-width: 600px;
+        }
+
+        .about-content {
+            display: grid;
+            gap: 20px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 80px 0 40px;
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border);
+            margin-top: 60px;
+        }
+
+        /* Responsive Fixes */
+        @media (max-width: 600px) {
+            .hero { padding: 80px 0 40px; }
+            .card { padding: 25px; }
+            .cta-group { flex-direction: column; }
+            .btn { text-align: center; }
+        }
+    </style>
 </head>
-
 <body>
 
-  <header>
-    <h1>GIGABOIZ</h1>
-    <p>
-      Indie game developer building PC games with passion, simplicity,
-      and old-school creativity.
-    </p>
+    <section class="hero container">
+        <h1>GIGABOIZ</h1>
+        <p class="tagline">Indie game developer building PC games</p>
+        
+        <div class="cta-group">
+            <a href="https://gigaboiz.itch.io/gigaboiz-impossible-click-escape" class="btn btn-primary" target="_blank">Play Impossible Click Escape</a>
+            <a href="https://gigaboiz.itch.io" class="btn btn-secondary" target="_blank">View Itch.io Profile</a>
+        </div>
+    </section>
 
-    <a class="btn" href="https://gigaboiz.itch.io/gigaboiz-impossible-click-escape">
-      ▶ Play My Game
-    </a>
-  </header>
+    <main class="container">
+        <h3 class="section-title">Latest Release</h3>
+        <div class="card featured-game">
+            <h2>Impossible Click Escape</h2>
+            <p>A high-stakes, precision-based escape challenge that tests your reflexes and patience. Can you click your way to freedom, or will the environment catch you first?</p>
+            <a href="https://gigaboiz.itch.io/gigaboiz-impossible-click-escape" class="btn btn-secondary" style="font-size: 0.8rem; padding: 10px 20px;">View Project</a>
+        </div>
 
-  <div class="card">
-    <h2>🎮 Current Release</h2>
-    <p><b>Impossible Click Escape</b></p>
-    <p>
-      A fun rage-click challenge game made for itch.io.
-      More projects coming soon.
-    </p>
+        <h3 class="section-title">The Studio</h3>
+        <div class="card about-studio">
+            <div class="about-content">
+                <p><strong>GIGABOIZ</strong> is an independent development house dedicated to creating focused, engaging PC experiences. We believe in tight gameplay loops, minimalist aesthetics, and games that respect the player's time while challenging their skill.</p>
+                <p>Based in the digital frontier, we are currently exploring the intersection of arcade mechanics and modern polish.</p>
+            </div>
+        </div>
+    </main>
 
-    <a class="btn" href="https://gigaboiz.itch.io">
-      Visit Itch.io Profile →
-    </a>
-  </div>
-
-  <div class="card">
-    <h2>🚀 About Studio</h2>
-    <p>
-      GIGABOIZ Studio is focused on small, creative games.
-      No corporate nonsense — just pure gameplay.
-    </p>
-  </div>
-
-  <footer>
-    © 2026 GIGABOIZ Studio • Built with GitHub Pages
-  </footer>
+    <footer class="container">
+        <p>&copy; 2026 GIGABOIZ Studio</p>
+    </footer>
 
 </body>
 </html>
