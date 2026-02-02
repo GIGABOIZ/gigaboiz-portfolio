@@ -9,13 +9,29 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #0a0a0c;
+            --bg-dark: #070708;
             --card-bg: rgba(255, 255, 255, 0.03);
             --border: rgba(255, 255, 255, 0.08);
-            --accent: #6366f1; /* Subtle indigo glow */
-            --accent-glow: rgba(99, 102, 241, 0.3);
+            --accent: #6366f1;
             --text-main: #f8fafc;
             --text-dim: #94a3b8;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0); }
+            50% { transform: translate(30px, -20px); }
+            100% { transform: translate(0, 0); }
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            20% { left: 100%; }
+            100% { left: 100%; }
         }
 
         * {
@@ -32,17 +48,17 @@
             overflow-x: hidden;
         }
 
-        /* Ambient Background Glows */
-        body::before {
-            content: '';
+        /* Animated Ambient Background */
+        .glow-sphere {
             position: fixed;
-            top: -10%;
-            right: -10%;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
             z-index: -1;
-            filter: blur(80px);
+            filter: blur(100px);
+            animation: float 15s infinite ease-in-out;
+            top: -100px;
+            right: -100px;
         }
 
         .container {
@@ -53,16 +69,17 @@
 
         /* Hero Section */
         .hero {
-            padding: 120px 0 60px;
+            padding: 140px 0 80px;
             text-align: center;
+            animation: fadeInUp 1s ease-out;
         }
 
         .hero h1 {
-            font-size: clamp(3.5rem, 10vw, 6rem);
+            font-size: clamp(3.5rem, 12vw, 7rem);
             font-weight: 900;
-            letter-spacing: -2px;
+            letter-spacing: -4px;
             margin-bottom: 10px;
-            background: linear-gradient(180deg, #fff 0%, #64748b 100%);
+            background: linear-gradient(180deg, #fff 30%, rgba(255,255,255,0.2) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-transform: uppercase;
@@ -73,23 +90,28 @@
             color: var(--text-dim);
             font-weight: 300;
             margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.3s forwards;
         }
 
-        /* Buttons */
+        /* Buttons with Shine Effect */
         .cta-group {
             display: flex;
             gap: 15px;
             justify-content: center;
             flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.6s forwards;
         }
 
         .btn {
-            padding: 14px 28px;
-            border-radius: 12px;
+            position: relative;
+            padding: 16px 32px;
+            border-radius: 14px;
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.3s ease;
-            font-size: 0.95rem;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            overflow: hidden;
         }
 
         .btn-primary {
@@ -98,11 +120,19 @@
             border: 1px solid var(--text-main);
         }
 
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 50%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+            transform: skewX(-25deg);
+            animation: shine 4s infinite;
+        }
+
         .btn-primary:hover {
-            background: transparent;
-            color: var(--text-main);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px -10px var(--accent);
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(99, 102, 241, 0.4);
         }
 
         .btn-secondary {
@@ -113,103 +143,100 @@
         }
 
         .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 255, 255, 0.2);
-            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
         }
 
         /* Content Sections */
         .section-title {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
             color: var(--accent);
             margin-bottom: 24px;
             text-align: center;
-            margin-top: 80px;
+            margin-top: 100px;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.8s forwards;
         }
 
         .card {
             background: var(--card-bg);
             border: 1px solid var(--border);
-            backdrop-filter: blur(12px);
-            border-radius: 24px;
-            padding: 40px;
+            backdrop-filter: blur(16px);
+            border-radius: 28px;
+            padding: 50px;
             margin-bottom: 30px;
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border 0.3s ease;
+            transition: all 0.5s ease;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 1s forwards;
         }
 
         .card:hover {
-            transform: scale(1.01);
-            border-color: rgba(255, 255, 255, 0.15);
+            border-color: var(--accent);
+            box-shadow: 0 0 40px rgba(99, 102, 241, 0.1);
+            transform: translateY(-5px);
         }
 
-        .featured-game h2 {
-            font-size: 2rem;
-            margin-bottom: 12px;
+        .card h2 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
         }
 
-        .featured-game p {
-            color: var(--text-dim);
-            margin-bottom: 24px;
-            max-width: 600px;
+        .about-studio {
+            animation-delay: 1.2s;
         }
 
-        .about-content {
-            display: grid;
-            gap: 20px;
-        }
-
-        /* Footer */
         footer {
             text-align: center;
-            padding: 80px 0 40px;
+            padding: 100px 0 50px;
             color: var(--text-dim);
-            font-size: 0.85rem;
-            border-top: 1px solid var(--border);
-            margin-top: 60px;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
         }
 
-        /* Responsive Fixes */
         @media (max-width: 600px) {
-            .hero { padding: 80px 0 40px; }
-            .card { padding: 25px; }
+            .hero { padding: 100px 0 40px; }
+            .card { padding: 30px; }
             .cta-group { flex-direction: column; }
-            .btn { text-align: center; }
         }
     </style>
 </head>
 <body>
+
+    <div class="glow-sphere"></div>
 
     <section class="hero container">
         <h1>GIGABOIZ</h1>
         <p class="tagline">Indie game developer building PC games</p>
         
         <div class="cta-group">
-            <a href="https://gigaboiz.itch.io/gigaboiz-impossible-click-escape" class="btn btn-primary" target="_blank">Play Impossible Click Escape</a>
-            <a href="https://gigaboiz.itch.io" class="btn btn-secondary" target="_blank">View Itch.io Profile</a>
+            <a href="https://gigaboiz.itch.io/gigaboiz-impossible-click-escape" class="btn btn-primary" target="_blank">Play Latest Game</a>
+            <a href="https://gigaboiz.itch.io" class="btn btn-secondary" target="_blank">Itch.io Profile</a>
         </div>
     </section>
 
     <main class="container">
-        <h3 class="section-title">Latest Release</h3>
+        <h3 class="section-title">Featured Project</h3>
         <div class="card featured-game">
             <h2>Impossible Click Escape</h2>
-            <p>A high-stakes, precision-based escape challenge that tests your reflexes and patience. Can you click your way to freedom, or will the environment catch you first?</p>
-            <a href="https://gigaboiz.itch.io/gigaboiz-impossible-click-escape" class="btn btn-secondary" style="font-size: 0.8rem; padding: 10px 20px;">View Project</a>
+            <p style="color: var(--text-dim); margin-bottom: 30px; font-size: 1.1rem;">
+                A high-stakes precision challenge where the only way out is through. Master your reflexes in this atmospheric PC experience.
+            </p>
+            <a href="https://gigaboiz.itch.io/gigaboiz-impossible-click-escape" class="btn btn-secondary" style="font-size: 0.85rem;">View on Itch.io</a>
         </div>
 
-        <h3 class="section-title">The Studio</h3>
+        <h3 class="section-title">About</h3>
         <div class="card about-studio">
-            <div class="about-content">
-                <p><strong>GIGABOIZ</strong> is an independent development house dedicated to creating focused, engaging PC experiences. We believe in tight gameplay loops, minimalist aesthetics, and games that respect the player's time while challenging their skill.</p>
-                <p>Based in the digital frontier, we are currently exploring the intersection of arcade mechanics and modern polish.</p>
-            </div>
+            <p style="margin-bottom: 20px;"><strong>GIGABOIZ</strong> is an independent studio crafting minimalist, high-impact PC games. We focus on mechanical depth and premium aesthetics.</p>
+            <p style="color: var(--text-dim);">Currently developing experimental titles with a focus on polished feel and immersive soundscapes.</p>
         </div>
     </main>
 
-    <footer class="container">
-        <p>&copy; 2026 GIGABOIZ Studio</p>
+    <footer>
+        <p>&copy; 2026 GIGABOIZ STUDIO • BUILT FOR PC</p>
     </footer>
 
 </body>
