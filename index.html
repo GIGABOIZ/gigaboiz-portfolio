@@ -112,6 +112,7 @@
             font-weight: 600;
             transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
             overflow: hidden;
+            display: inline-block;
         }
 
         .btn-primary {
@@ -185,7 +186,7 @@
             letter-spacing: -1px;
         }
 
-        .about-studio {
+        .about-studio, .contact-section {
             animation-delay: 1.2s;
         }
 
@@ -217,43 +218,60 @@
             <a href="https://gigaboiz.itch.io" class="btn btn-secondary" target="_blank">Itch.io Profile</a>
         </div>
     </section>
-<main class="container">
+
+    <!-- Consolidated into a single main tag -->
+    <main class="container">
+        
         <h3 class="section-title">Featured Project</h3>
         <div class="card featured-game">
             <h2>ASCEP - The Horror Game</h2>
             <p style="color: var(--text-dim); margin-bottom: 30px; font-size: 1.1rem;">
                Three stages of security, one deadly hunter, and zero room for error
             </p>
-            <a href="https://gigaboiz.itch.io/ascep" class="btn btn-secondary" style="font-size: 0.85rem;">View on Itch.io</a>
+            <a href="https://gigaboiz.itch.io/ascep" class="btn btn-secondary" style="font-size: 0.85rem;" target="_blank">View on Itch.io</a>
         </div>
     
-    <main class="container">
         <h3 class="section-title">Featured Project</h3>
         <div class="card featured-game">
             <h2>Impossible Click Escape</h2>
             <p style="color: var(--text-dim); margin-bottom: 30px; font-size: 1.1rem;">
                 A high-stakes precision challenge where the only way out is through. Master your reflexes in this atmospheric PC experience.
             </p>
-            <a href="https://gigaboiz.itch.io/gigaboiz-impossible-click-escape" class="btn btn-secondary" style="font-size: 0.85rem;">View on Itch.io</a>
+            <a href="https://gigaboiz.itch.io/gigaboiz-impossible-click-escape" class="btn btn-secondary" style="font-size: 0.85rem;" target="_blank">View on Itch.io</a>
         </div>
         
-    <main class="container">
         <h3 class="section-title">Featured Project</h3>
         <div class="card featured-game">
             <h2>Hide N Seek</h2>
             <p style="color: var(--text-dim); margin-bottom: 30px; font-size: 1.1rem;">
                Hide n Seek is a fast-paced multiplayer hide-and-seek experience where strategy beats speed.
             </p>
-            <a href="https://gigaboiz.itch.io/hide-n-seek" class="btn btn-secondary" style="font-size: 0.85rem;">View on Itch.io</a>
+            <a href="https://gigaboiz.itch.io/hide-n-seek" class="btn btn-secondary" style="font-size: 0.85rem;" target="_blank">View on Itch.io</a>
         </div>
-<iframe frameborder="0" src="https://itch.io/embed/4461172?bg_color=090808&amp;fg_color=efefed&amp;link_color=5af1fa" width="552" height="167"><a href="https://gigaboiz.itch.io/ascep">ASCEP by GIGABOIZ</a></iframe>
+
+        <div style="text-align: center; margin: 40px 0;">
+            <iframe frameborder="0" src="https://itch.io/embed/4461172?bg_color=090808&amp;fg_color=efefed&amp;link_color=5af1fa" width="552" height="167" style="max-width: 100%; border-radius: 14px;"><a href="https://gigaboiz.itch.io/ascep">ASCEP by GIGABOIZ</a></iframe>
+        </div>
+
         <h3 class="section-title">About</h3>
         <div class="card about-studio">
-            <p style="margin-bottom: 20px;"><strong>Myself GIGABOIZ ,</strong>I’m a game developer focused on building and publishing interactive experiences.
-I’ve shipped multiple projects and continuously improve through hands-on work.
-Currently aiming to grow, collaborate, and create impactful games.</p>
+            <p style="margin-bottom: 20px;"><strong>Myself GIGABOIZ,</strong> I’m a game developer focused on building and publishing interactive experiences. I’ve shipped multiple projects and continuously improve through hands-on work. Currently aiming to grow, collaborate, and create impactful games.</p>
             <p style="color: var(--text-dim);">Currently On Hold</p>
         </div>
+
+        <!-- NEW CONTACT SECTION -->
+        <h3 class="section-title">Contact</h3>
+        <div class="card contact-section">
+            <h2>Let's Connect</h2>
+            <p style="color: var(--text-dim); margin-bottom: 25px; font-size: 1.1rem;">
+                Want to collaborate, report bugs, or just hang out? Reach out to me directly or join the community.
+            </p>
+            <p style="margin-bottom: 30px; font-size: 1.1rem;">
+                <strong>Discord ID:</strong> <span style="color: var(--accent); font-weight: bold; background: rgba(99, 102, 241, 0.1); padding: 4px 10px; border-radius: 6px;">gigaboiz</span>
+            </p>
+            <a href="https://discord.gg/cmEPC9ZEyV" class="btn btn-secondary" style="font-size: 0.85rem;" target="_blank">Join Discord Server</a>
+        </div>
+
     </main>
 
     <footer>
@@ -262,4 +280,3 @@ Currently aiming to grow, collaborate, and create impactful games.</p>
 
 </body>
 </html>
-
